@@ -9,7 +9,7 @@
     "ts-dev": "ts-node index.ts",
     "react-dev": "parcel src/index.html",
     "react-dev:stable": "PARCEL_WORKERS=1 parcel src/index.html --no-hmr --no-cache --port 3000 --no-content-hash",
-    "react-build-once": "NODE_OPTIONS=\"--max-old-space-size=4096\" parcel build src/index.html --dist-dir ./dist-web --no-optimize --no-scope-hoist",
+    "react-build-once": "PARCEL_WORKERS=1 parcel build src/index.html --dist-dir ./dist-web --no-cache --no-source-maps",
     "react-serve": "npx http-server ./dist-web -p 3000",
     "react-build": "parcel build src/index.html",
     "test": "jest",
