@@ -1338,14 +1338,6 @@ const PerformanceChart: React.FC<{
           >
             <div className="font-semibold mb-2">Month: {hoveredPoint.month}</div>
             
-            {/* Total contribution */}
-            {hoveredPoint.cumulativeContributions !== undefined && (
-              <div className="flex items-center mb-2">
-                <div className="w-4 h-4 bg-blue-500 mr-2 rounded-sm"></div>
-                <div>Total Contributed: £{new Intl.NumberFormat('en-GB').format(Math.round(hoveredPoint.cumulativeContributions))}</div>
-              </div>
-            )}
-            
             <div className="flex items-center mb-2">
               <div className="w-4 h-4 bg-green-500 mr-2 rounded-sm"></div>
               <div>Without Fees: £{new Intl.NumberFormat('en-GB').format(Math.round(hoveredPoint.withoutFees))}</div>
@@ -1355,6 +1347,14 @@ const PerformanceChart: React.FC<{
               <div className="w-4 h-4 bg-red-500 mr-2 rounded-sm"></div>
               <div>With Fees: £{new Intl.NumberFormat('en-GB').format(Math.round(hoveredPoint.withFees))}</div>
             </div>
+            
+            {/* Total contribution */}
+            {hoveredPoint.cumulativeContributions !== undefined && (
+              <div className="flex items-center mb-2">
+                <div className="w-4 h-4 bg-blue-500 mr-2 rounded-sm"></div>
+                <div>Total Contributed: £{new Intl.NumberFormat('en-GB').format(Math.round(hoveredPoint.cumulativeContributions))}</div>
+              </div>
+            )}
             
             <div className="mt-2 pt-2 border-t border-gray-200 flex flex-col gap-1">
               <div className="font-semibold text-red-600">Fees cost: £{new Intl.NumberFormat('en-GB').format(Math.round(hoveredPoint.withoutFees - hoveredPoint.withFees))}</div>
