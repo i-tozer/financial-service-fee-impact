@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Access Test</title>
+</head>
+<body>
+    <h1>CSV File Access Test</h1>
+    <div id="result">Testing...</div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                // Try to fetch the CSV file
+                const response = await fetch('/data/sp500.csv');
+                
+                if (response.ok) {
+                    const text = await response.text();
+                    resultDiv.innerHTML = `
+                        <p style="color: green;">Success! CSV file loaded.</p>
+                        <p>First 100 characters: ${text.substring(0, 100)}</p>
+                        <p>File size: ${text.length} bytes</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p style="color: red;">Failed to load CSV file.</p>
+                        <p>Status: ${response.status} ${response.statusText}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p style="color: red;">Error: ${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 
